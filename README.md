@@ -1,2 +1,3 @@
-# goes_agents_poc
-PoC Agents Custom on Agentspace for GOES
+# GOES Agents PoC
+
+Proof of Concept Custom Agents for El Salvador Agentspace initiative
