@@ -21,10 +21,13 @@ from pathlib import Path
 from google.adk.agents import Agent
 from google.adk.agents.callback_context import CallbackContext
 from google.genai import types
+from google.adk.tools import agent_tool
 
 from . import tools
 from .prompts import get_instructions
 from .utils import get_env_var
+
+from google.adk.code_executors import BuiltInCodeExecutor
 
 # Env Variables
 from dotenv import load_dotenv
@@ -42,9 +45,10 @@ def setup_before_agent_call(callback_context: CallbackContext) -> None:
     """Setup the agent."""
     pass
 
+
 root_agent = Agent(
     model=get_env_var("AGENT_ROOT_MODEL"),
-    name=config['agent_name'],    
+    name=config['agent_name'],
     instruction=get_instructions(),
     tools=[tools.get_bigquery_schema, tools.run_bigquery_query],
     before_agent_callback=setup_before_agent_call,
